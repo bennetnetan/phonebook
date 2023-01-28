@@ -27,8 +27,12 @@ Route::get('/home', [App\Http\Controllers\ContactController::class, 'index'])->n
 Route::post('/see', [App\Http\Controllers\ContactController::class, 'show'])->name('see');
 
 // Update
-Route::get('/edit', [App\Http\Controllers\ContactController::class, 'edit'])->name('edit');
-Route::put('/edit/{$id}', [App\Http\Controllers\ContactController::class, 'update'])->name('update  ');
+// Route::get('edit/{$id}', function () {
+//     return view('edit');
+// })->name('edit');
+Route::post('/edit', [App\Http\Controllers\ContactController::class, 'edit'])->name('ed');
+// Route::put('/edit/{$id}', [App\Http\Controllers\ContactController::class, 'update'])->name('update');
+
 // Create
 Route::get('/create', function () {
     return view('create');

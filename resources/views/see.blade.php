@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="wrapper mx-auto">
+<div class="container mx-auto">
     <div class="row justify-content-center">
         <div class="col-md-6 text-white    " >
             <div class="card border-primary bg-dark d-flex align-items-center">
@@ -11,7 +11,15 @@
                     <i class="fas fa-address-card"></i>Phonebook Record
                 </h4>
                 <a href="{{ route('home') }}" class="btn btn-outline-success"><i class="fa fa-home" aria-hidden="true"></i> Home </a>
-                <a href="{{ route('home', $contacts->id) }}" class="btn btn-outline-info"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                <form action="{{ route('ed') }}" method="post" class="form-inline">
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{ $contacts->id }}">
+                    {{-- Edit --}}
+                    <button href="{{ route('ed') }}" type="submit" class="btn btn-outline-primary">
+                        <i class="fas fa-edit    "></i> Edit
+                    </button>
+                </form>
                 <a href="{{ route('home', $contacts->id) }}" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                 <div class="card-body">
                     <h5>

@@ -17,59 +17,54 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="First Name" class="form-label">First name</label>
-                                <input type="text" name="fname" id="" class="form-control" value="{{ old('name') }}">
+                                <input type="text" name="fname" id="" class="form-control" value="{{ $contacts->fName }}">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="Last Name" class="form-label">Last name</label>
-                                <input type="text" name="lname" id="" class="form-control" value="{{ old('name') }}">
+                                <input type="text" name="lname" id="" class="form-control" value="{{ $contacts->lName }}">
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" id="" class="form-control" value="{{ old('name') }}">
+                                <input type="email" name="email" id="" class="form-control" value="{{ $contacts->email }}">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="Phone number" class="form-label">Phone Number</label>
-                                <input type="phone" name="phone" id="" class="form-control" minlength="11" maxlength="13" value="{{ old('name') }}">
+                                <input type="phone" name="phone" id="" class="form-control" minlength="11" maxlength="13" value="{{ $contacts->phoneNumber }}">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="Address" class="form-label">Address</label>
-                                <input type="address" name="address" id="" class="form-control" value="{{ old('name') }}">
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="Photo" class="form-label">Photo</label>
-                                <input type="file" name="photo" id="" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="info" class="form-label">Info</label>
-                                <textarea name="info" id="" rows="2" class="form-control" value="{{ old('name') }}"></textarea>
+                                <input type="address" name="address" id="" class="form-control" value="{{ $contacts->address }}">
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="First Name" class="form-label">Category</label>
-                                <select name="category" id="" value="{{ old('option') }}" class="form-select">
-                                    <option>Family</option>
-                                    <option>Friends</option>
-                                    <option>Work</option>
-                                    <option>Classmate</option>
-                                    <option>Other</option>
+                                <select name="category" id="" value="{{ $contacts->category }}" class="form-select">
+                                    <option value="1">Family</option>
+                                    <option value="2">Friends</option>
+                                    <option value="3">Work</option>
+                                    <option value="4">Classmate</option>
+                                    <option value="5">Other</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="info" class="form-label">Info</label>
+                                <textarea name="info" id="" rows="2" class="form-control">
+                                    {{ $contacts->info }}
+                                </textarea>
                             </div>
                         </div>
 

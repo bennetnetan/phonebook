@@ -86,9 +86,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        return view('edit');
+        $contacts = Contact::find($request->id);
+        // dd($contacts);
+        return view('edit', compact('contacts'));
     }
 
     /**

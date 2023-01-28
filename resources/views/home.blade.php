@@ -19,9 +19,9 @@
             <a href="{{ route('create') }}" class="btn btn-primary">Create Record <i class="fa fa-user-plus" aria-hidden="true"></i></a>
         </div>
         <div class="col-md-11">
-            <table class="table table-responsive table-inverse text-white">
+            <table class="table table-responsive table-inverse text-white" data-toggle="table" data-checkbox="true">
                 <thead>
-                    <th>#</th>
+                    <th data-field="state" data-checkbox="true">#</th>
                     {{-- <th>Image</th> --}}
                     <th>Name</th>
                     <th>Phone</th>
@@ -51,17 +51,37 @@
                                 <td>{{ _('Friend') }}</td>
                                 <td>{{ _('He is my best friend. His birthday is on DD-MM-YYYY') }}</td> --}}
                                 <td>
-                                    <form action="{{ route('see') }}" method="post">@csrf<input type="hidden" name="id" value="{{ $contact->id }}"><button type="submit" class="btn btn-outline-info"><i class="fa fa-eye" aria-hidden="true"></i> View</button></form>
-                                    {{-- <a href="{{ route('see', $contact->id) }}" class="btn btn-outline-info">
+                                    <form action="{{ route('see') }}" method="post" class="form-inline">
+                                        @csrf
 
-                                    </a> --}}
+                                        <input type="hidden" name="id" value="{{ $contact->id }}">
+                                        {{-- See --}}
+                                        <button type="submit" class="btn btn-outline-info">
+                                            <i class="fa fa-eye" aria-hidden="true"></i> View
+                                        </button>
+                                    </form>
 
-                                    <a href="{{ route('edit') }}" class="btn btn-outline-primary">
-                                        <i class="fas fa-edit    "></i> Edit
-                                    </a>
-                                    <a href="" class="btn btn-outline-danger">
-                                        <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                    </a>
+                                    <form action="{{ route('ed') }}" method="post" class="form-inline">
+                                        @csrf
+
+                                        <input type="hidden" name="id" value="{{ $contact->id }}">
+                                        {{-- Edit --}}
+                                        <button href="{{ route('ed') }}" type="submit" class="btn btn-outline-primary">
+                                            <i class="fas fa-edit    "></i> Edit
+                                        </button>
+                                    </form>
+
+                                    <form action="{{ route('ed') }}" method="post" class="form-inline">
+                                        @csrf
+
+                                        <input type="hidden" name="id" value="{{ $contact->id }}">
+                                        {{-- Delete --}}
+                                        <a href="" class="btn btn-outline-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                        </a>
+                                    </form>
+
+
                                 </td>
 
                     </tr>
@@ -75,4 +95,12 @@
         </div>
     </div>
 </div>
+<script>
+    $('#table').on('check.bs.table', function (e, row) {
+    console.log(row);
+    });
+
+    //In controller
+    $selectedRows = $request->input('selectedRows');
+</script>
 @endsection
