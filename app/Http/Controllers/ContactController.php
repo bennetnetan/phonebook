@@ -151,4 +151,18 @@ class ContactController extends Controller
 
         return redirect()->route('home')->with('message1', 'Multiple contacts deleted successfully');
     }
+
+    public function search(Request $request){
+
+        $query = trim(strip_tags($request->input('query')));
+
+        $results = Contact::where('fName', 'like', "%$query%")
+            ->orwhere('email', 'like', "%$query%")
+            ->orWhere('address', 'like', "%$query%")
+            ->orWhere('lName', 'like', "%$query%")
+            ->paginate(10);
+
+        return view('search', compact('results'));
+        // dd($request);
+    }
 }

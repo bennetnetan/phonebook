@@ -4,8 +4,17 @@
 <div class="wrapper mx-auto">
     <div class="row justify-content-center">
         <div class="col-md-11 text-white">
-            <h3><i class="fas fa-address-card "></i> Phonebook Records</h3>
-
+            <h3 class=" text-center"><i class="fas fa-address-card "></i> Phonebook Records</h3>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form action="{{ route('search') }}" method="post" class="input-group form-inline my-2 my-lg-0">
+                        @csrf
+                        <input class="form-control mr-sm-2 rounded" type="string" placeholder="Search" aria-label="Search"  aria-describedby="search-addon" maxlength="255" minlength="3" required/>
+                            <button class="btn btn-outline-success my-2 my-sm-0 rounded" type="submit">Search <i class="fas fa-search    "></i></button>
+                    </form>
+                </div>
+            </div>
             <br>
             @if (session()->has('message'))
                 <div class="alert alert-success" role="alert">
