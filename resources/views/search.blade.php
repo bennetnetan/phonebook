@@ -84,7 +84,8 @@
                                         <td>{{ _('Friend') }}</td>
                                         <td>{{ _('He is my best friend. His birthday is on DD-MM-YYYY') }}</td> --}}
                                         <td>
-                                            <form name="f3" action="{{ route('see') }}" method="post" class="form-inline">
+                                            <form action=""></form>
+                                            <form id="f3" action="{{ route('see') }}" method="post" class="form-inline">
                                                 @csrf
 
                                                 <input type="hidden" name="id" value="{{ $contact->id }}">
@@ -135,11 +136,9 @@
     </div>
 </div>
 <script>
-    $('#table').on('check.bs.table', function (e, row) {
-    console.log(row);
-    });
-
-    //In controller
-    $selectedRows = $request->input('selectedRows');
+$("#f3").submit(function(event) {
+    event.preventDefault();
+    // Do something else instead of submitting the form
+});
 </script>
 @endsection
