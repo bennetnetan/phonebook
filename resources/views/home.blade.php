@@ -29,7 +29,7 @@
             <br>
 
             {{-- Create Record --}}
-            <a href="{{ route('create') }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Record </a>
+            <a href="{{ route('create') }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Add contact </a>
                 <br><br>
         </div>
         <div class="col-md-11">
@@ -40,14 +40,15 @@
 
                 {{-- Delete --}}
                 <button type="submit" class="btn btn-danger">
-                    <i class="fas fa-user-alt-slash    "></i> Delete Multiple
+                    <i class="fas fa-user-alt-slash    "></i> Delete Multiple contacts
                 </button>
+                <br><br>
+                <h3 class="text-warning">All records</h3>
+                <hr class="text-danger">
 
-                <br><br><hr class="text-danger">
-
-            <table class="table table-responsive table-inverse text-white" data-toggle="table" data-checkbox="true">
-                <thead>
-                    <th data-field="state" data-checkbox="true">#</th>
+            <table class="table table-responsive table-dark table-hover text-white" data-toggle="table" data-checkbox="true">
+                <thead class="text-warning">
+                    <th data-field="state" data-checkbox="true" >#</th>
                     {{-- <th>Image</th> --}}
                     <th>Name</th>
                     <th>Phone</th>
@@ -80,7 +81,7 @@
                                 <td>{{ _('He is my best friend. His birthday is on DD-MM-YYYY') }}</td> --}}
                                 <td>
                                     <form action="" method="post"></form>
-                                    <form action="{{ route('see') }}" method="post" class="form-inline">
+                                    <form action="{{ route('see') }}" method="post" class="d-inline-block">
                                         @csrf
 
                                         <input type="hidden" name="id" value="{{ $contact->id }}">
@@ -90,7 +91,7 @@
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('ed') }}" method="post" class="form-inline">
+                                    <form action="{{ route('ed') }}" method="post" class="d-inline-block">
                                         @csrf
 
                                         <input type="hidden" name="id" value="{{ $contact->id }}">
@@ -100,7 +101,7 @@
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('delete') }}" method="post" class="form-inline">
+                                    <form action="{{ route('delete') }}" method="post" class="d-inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" name="id" value="{{ $contact->id }}">

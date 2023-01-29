@@ -50,6 +50,10 @@
                                 </li>
                             @endif
                         @else
+                            <a href="{{ route('home') }}" class="btn btn-outline-success"><i class="fas fa-home    "></i> Home </a>
+
+                            <a href="{{ route('create') }}" class="btn btn-outline-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Add contact </a>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

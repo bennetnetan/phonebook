@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = DB::table('contacts')->paginate(7);
+        $contacts = DB::table('contacts')->paginate(10);
         $contacts_count = DB::table('contacts')->count();
 
         return view('home', compact('contacts','contacts_count'));
@@ -161,7 +161,7 @@ class ContactController extends Controller
             ->orwhere('email', 'like', "%$query%")
             ->orWhere('address', 'like', "%$query%")
             ->orWhere('lName', 'like', "%$query%")
-            ->paginate(5);
+            ->paginate(10);
 
             // dd($results);
 

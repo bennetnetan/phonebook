@@ -44,14 +44,16 @@
 
                 {{-- Delete --}}
                 <button type="submit" class="btn btn-danger">
-                    <i class="fas fa-user-alt-slash    "></i> Delete Multiple
+                    <i class="fas fa-user-alt-slash    "></i> Delete multiple Contacts
                 </button>
 
-                <br><br><hr class="text-danger">
+                <br><br>
+                <h3 class="text-warning">Search Results</h3>
+                <hr class="text-danger">
 
                 @if (count($results))
-                    <table class="table table-responsive table-inverse text-white" data-toggle="table" data-checkbox="true">
-                        <thead>
+                    <table class="table table-responsive table-dark table-hover text-white" data-toggle="table" data-checkbox="true">
+                        <thead class="text-warning">
                             <th data-field="state" data-checkbox="true">#</th>
                             {{-- <th>Image</th> --}}
                             <th>Name</th>
@@ -85,7 +87,7 @@
                                         <td>{{ _('He is my best friend. His birthday is on DD-MM-YYYY') }}</td> --}}
                                         <td>
                                             <form action=""></form>
-                                            <form id="f3" action="{{ route('see') }}" method="post" class="form-inline">
+                                            <form id="f3" action="{{ route('see') }}" method="post" class="d-inline-block">
                                                 @csrf
 
                                                 <input type="hidden" name="id" value="{{ $contact->id }}">
@@ -95,7 +97,7 @@
                                                 </button>
                                             </form>
 
-                                            <form name="f4" action="{{ route('ed') }}" method="post" class="form-inline">
+                                            <form name="f4" action="{{ route('ed') }}" method="post" class="d-inline-block">
                                                 @csrf
 
                                                 <input type="hidden" name="id" value="{{ $contact->id }}">
@@ -105,7 +107,7 @@
                                                 </button>
                                             </form>
 
-                                            <form name="f5" action="{{ route('delete') }}" method="post" class="form-inline">
+                                            <form name="f5" action="{{ route('delete') }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="id" value="{{ $contact->id }}">
