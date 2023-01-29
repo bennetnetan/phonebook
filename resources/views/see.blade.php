@@ -40,11 +40,11 @@
                             <?php
                                 if ($contacts->category == 1) {
                                     echo('Family');
-                                }elseif ($contacts->category == 1) {
+                                }elseif ($contacts->category == 2) {
                                     echo('Friends');
-                                }elseif ($contacts->category == 1) {
+                                }elseif ($contacts->category == 3) {
                                     echo('Work');
-                                }elseif ($contacts->category == 1) {
+                                }elseif ($contacts->category == 4) {
                                     echo('Classmate');
                                 }else{
                                     echo('Other');

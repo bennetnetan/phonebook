@@ -8,12 +8,14 @@
               <img class="card-img-top" src="holder.js/100px180/" alt="">
               <div class="card-body">
                 <h4 class="card-title">
-                    <i class="fas fa-address-card "></i> Create Phonebook Record
+                    <i class="fas fa-address-card "></i> Edit Phonebook Record
                 </h4>
                 <p class="card-body">
 
-                    <form action="" method="POST" class="row" enctype="multipart/form-data">
+                    <form action="{{ route('update') }}" method="POST" class="row" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
+                        <input type="hidden" name="id" id="" value="{{ $contacts->id }}" hidden>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="First Name" class="form-label">First name</label>
@@ -49,12 +51,39 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="First Name" class="form-label">Category</label>
-                                <select name="category" id="" value="{{ $contacts->category }}" class="form-select">
-                                    <option value="1">Family</option>
-                                    <option value="2">Friends</option>
-                                    <option value="3">Work</option>
-                                    <option value="4">Classmate</option>
-                                    <option value="5">Other</option>
+                                <select name="category" id="" value="{{ $contacts->category }}" class="form-control" required>
+                                    @if ( $contacts->category == 1 )
+                                        <option value="1" selected>Family</option>
+                                        <option value="2">Friends</option>
+                                        <option value="3">Work</option>
+                                        <option value="4">Classmate</option>
+                                        <option value="5">Other</option>
+                                    @elseif ( $contacts->category == 2 )
+                                        <option value="1">Family</option>
+                                        <option value="2" selected>Friends</option>
+                                        <option value="3">Work</option>
+                                        <option value="4">Classmate</option>
+                                        <option value="5">Other</option>
+                                    @elseif ( $contacts->category == 3 )
+                                        <option value="1">Family</option>
+                                        <option value="2">Friends</option>
+                                        <option value="3" selected>Work</option>
+                                        <option value="4">Classmate</option>
+                                        <option value="5">Other</option>
+                                    @elseif ( $contacts->category == 4 )
+                                        <option value="1">Family</option>
+                                        <option value="2">Friends</option>
+                                        <option value="3">Work</option>
+                                        <option value="4" selected>Classmate</option>
+                                        <option value="5">Other</option>
+                                    @elseif ( $contacts->category == 5 )
+                                        <option value="1">Family</option>
+                                        <option value="2">Friends</option>
+                                        <option value="3">Work</option>
+                                        <option value="4">Classmate</option>
+                                        <option value="5" selected>Other</option>
+                                    @endif
+
                                 </select>
                             </div>
                         </div>
@@ -70,7 +99,7 @@
 
                         <div class="form-group col-12 mt-4">
                             <button type="submit" name="submit" class="btn btn-outline-success">
-                                <i class="fas fa-save    "></i> Save
+                                <i class="fas fa-save    "></i> Update
                             </button>
 
                             <a href="{{ route('home') }}" class="btn btn-outline-danger">

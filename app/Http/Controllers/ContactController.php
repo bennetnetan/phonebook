@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = DB::table('contacts')->paginate(5);
+        $contacts = DB::table('contacts')->paginate(7);
         $contacts_count = DB::table('contacts')->count();
 
         return view('home', compact('contacts','contacts_count'));
@@ -63,7 +63,7 @@ class ContactController extends Controller
         $contact->save();
 
 
-        return redirect()->route('home')->with('message', 'Contact saved successfully');
+        return redirect()->route('home')->with('message', 'Contact created and saved successfully');
 
     }
 
@@ -100,9 +100,22 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $contact = Contact::findOrFail($request->input('id'));
+
+        $contact->fName = $request->input('fname');
+        $contact->lName = $request->input('lname');
+        $contact->email = $request->input('email');
+        $contact->phoneNumber = $request->input('phone');
+        $contact->address = $request->input('address');
+        $contact->info = $request->input('info');
+        $contact->category = $request->input('category');
+
+        $contact->save();
+        // dd($contact);
+
+        return redirect()->route('home')->with('message', 'Contact updated successfully');
     }
 
     /**
@@ -111,8 +124,31 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $contact = Contact::findOrFail($request->input('id'));
+        $contact->delete();
+        // dd($contact);
+
+        return redirect()->route('home')->with('message1', 'Contact deleted successfully');
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function destroyMulti(Request $request)
+    {
+        $selectedRows = $request->items;
+
+        foreach ($selectedRows as $selectedRow){
+            Contact::find($selectedRow)->delete();
+        }
+
+        return redirect()->route('home')->with('message1', 'Multiple contacts deleted successfully');
     }
 }

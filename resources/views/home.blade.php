@@ -8,17 +8,33 @@
 
             <br>
             @if (session()->has('message'))
-            <div class="alert alert-primary" role="alert">
-                <strong> <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ session('message') }}</strong>
-            </div>
-        @endif
+                <div class="alert alert-success" role="alert">
+                    <strong> <i class="fa fa-user-circle" aria-hidden="true"></i> {{ session('message') }}</strong>
+                </div>
+            @endif
+            @if (session()->has('message1'))
+                <div class="alert alert-danger" role="alert">
+                    <strong> <i class="fa fa-user-circle" aria-hidden="true"></i> {{ session('message1') }}</strong>
+                </div>
+            @endif
             <br>
 
             {{-- Create Record --}}
+            <a href="{{ route('create') }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Record </a>
 
-            <a href="{{ route('create') }}" class="btn btn-primary">Create Record <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+
+
         </div>
         <div class="col-md-11">
+            <form action="{{ route('deleteMulti') }}" method="post" class="form-inline">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="id" value="">
+
+                {{-- Delete --}}
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-user-alt-slash    "></i> Delete Multiple
+                </button>
             <table class="table table-responsive table-inverse text-white" data-toggle="table" data-checkbox="true">
                 <thead>
                     <th data-field="state" data-checkbox="true">#</th>
@@ -37,10 +53,12 @@
                                 <td>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="" id="" value="checkedValue">
+                                            <input class="form-check-input" type="checkbox" name="items[]" id="" value="{{ $contact->id }}">
                                         </label>
                                     </div>
                                 </td>
+
+
                                 {{-- <td>
                                     <img src="{{ $contact->image }}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="Picture here" height="6em" width="6em">
                                 </td> --}}
@@ -71,14 +89,14 @@
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('ed') }}" method="post" class="form-inline">
+                                    <form action="{{ route('delete') }}" method="post" class="form-inline">
                                         @csrf
-
+                                        @method('DELETE')
                                         <input type="hidden" name="id" value="{{ $contact->id }}">
                                         {{-- Delete --}}
-                                        <a href="" class="btn btn-outline-danger">
+                                        <button type="submit" class="btn btn-outline-danger">
                                             <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                        </a>
+                                        </button>
                                     </form>
 
 
@@ -91,6 +109,7 @@
                     @endif --}}
                 </tbody>
             </table>
+        </form>
             {!! $contacts->withQueryString()->links('pagination::bootstrap-5') !!}
         </div>
     </div>
