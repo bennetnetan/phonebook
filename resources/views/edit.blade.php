@@ -82,7 +82,14 @@
                                         <option value="3">Work</option>
                                         <option value="4">Classmate</option>
                                         <option value="5" selected>Other</option>
+                                    @else
+                                        <option value="1">Family</option>
+                                        <option value="2">Friends</option>
+                                        <option value="3">Work</option>
+                                        <option value="4">Classmate</option>
+                                        <option value="5">Other</option>
                                     @endif
+
 
                                 </select>
                             </div>

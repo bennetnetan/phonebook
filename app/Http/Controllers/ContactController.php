@@ -155,14 +155,17 @@ class ContactController extends Controller
     public function search(Request $request){
 
         $query = trim(strip_tags($request->input('query')));
+        // $query = $request->input('query');
 
         $results = Contact::where('fName', 'like', "%$query%")
             ->orwhere('email', 'like', "%$query%")
             ->orWhere('address', 'like', "%$query%")
             ->orWhere('lName', 'like', "%$query%")
-            ->paginate(10);
+            ->paginate(5);
+
+            // dd($results);
 
         return view('search', compact('results'));
-        // dd($request);
+
     }
 }

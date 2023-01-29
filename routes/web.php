@@ -45,4 +45,4 @@ Route::delete('/home', [App\Http\Controllers\ContactController::class, 'destroy'
 Route::delete('/delete', [App\Http\Controllers\ContactController::class, 'destroyMulti'])->name('deleteMulti')->middleware('auth');
 
 // Search
-Route::post('/search', [App\Http\Controllers\ContactController::class, 'search'])->name('search')->middleware('auth');
+Route::any('/search', [App\Http\Controllers\ContactController::class, 'search'])->name('search')->middleware('auth');

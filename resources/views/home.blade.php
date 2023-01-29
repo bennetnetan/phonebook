@@ -10,7 +10,7 @@
                 <div class="col-md-8">
                     <form action="{{ route('search') }}" method="post" class="input-group form-inline my-2 my-lg-0">
                         @csrf
-                        <input class="form-control mr-sm-2 rounded" type="string" placeholder="Search" aria-label="Search"  aria-describedby="search-addon" maxlength="255" minlength="3" required/>
+                        <input class="form-control mr-sm-2 rounded" name="query" type="string" placeholder="Search" aria-label="Search"  aria-describedby="search-addon" maxlength="255" minlength="3" required/>
                             <button class="btn btn-outline-success my-2 my-sm-0 rounded" type="submit">Search <i class="fas fa-search    "></i></button>
                     </form>
                 </div>
@@ -30,9 +30,7 @@
 
             {{-- Create Record --}}
             <a href="{{ route('create') }}" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Record </a>
-
-
-
+                <br><br>
         </div>
         <div class="col-md-11">
             <form action="{{ route('deleteMulti') }}" method="post" class="form-inline">
@@ -44,6 +42,9 @@
                 <button type="submit" class="btn btn-danger">
                     <i class="fas fa-user-alt-slash    "></i> Delete Multiple
                 </button>
+
+                <br><br><hr class="text-danger">
+
             <table class="table table-responsive table-inverse text-white" data-toggle="table" data-checkbox="true">
                 <thead>
                     <th data-field="state" data-checkbox="true">#</th>
@@ -78,6 +79,7 @@
                                 <td>{{ _('Friend') }}</td>
                                 <td>{{ _('He is my best friend. His birthday is on DD-MM-YYYY') }}</td> --}}
                                 <td>
+                                    <form action="" method="post"></form>
                                     <form action="{{ route('see') }}" method="post" class="form-inline">
                                         @csrf
 
